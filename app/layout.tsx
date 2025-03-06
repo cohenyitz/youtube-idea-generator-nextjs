@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from '@vercel/analytics/next';
 
 const lato = Lato({
   subsets: ["latin"],
@@ -23,15 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-    <body className={`${lato.className} bg-gray-50`}>
-    <div className="max-w-6xl mx-auto min-h-screen">
-        <Navbar />
-        {children}
-        <Toaster />
-      </div>
-      </body>
-    </html>
+      <html lang="en">
+        <body className={`${lato.className} bg-gray-50`}>
+          <div className="max-w-6xl mx-auto min-h-screen">
+            <Navbar />
+            {children}
+            <Analytics />
+            <Toaster />
+          </div>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

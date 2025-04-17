@@ -196,7 +196,7 @@ export async function processPendingJobs(): Promise<void> {
 
         // Parse the ideas from the job result and insert into Ideas table
         const ideasData = jobResult;
-        const newIdeas: InsertIdea[] = ideasData.map((idea: IdeaData) => ({
+        const newIdeas: InsertIdea[] = ideasData?.video_ideas?.map((idea: IdeaData) => ({
           userId,
           videoId: idea.video_id,
           commentId: idea.comment_id,
